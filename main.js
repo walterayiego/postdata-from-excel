@@ -64,7 +64,7 @@ async function postData(sessionCookie, formData) {
 
 // Main function to perform login and post data
 async function main(data) {
-  const sessionCookie = `JSESSIONID=2FF3F611682C15EC26A2A0AC59D59BBA`;
+  const sessionCookie = `JSESSIONID=<SESSION_ID>`;
   data.map(async (formData) => {
     await postData(sessionCookie, formData);
   });
