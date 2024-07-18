@@ -18,7 +18,7 @@ const loginUrl = "https://admin.revenue.co.ke/login";
 const postUrl = "https://admin.revenue.co.ke/property-rates/create";
 
 // Function to make the authenticated POST request
-async function postData(sessionCookie, formData) {
+async function postData(sessionCookie, formData, index) {
   try {
     const postResponse = await axios.post(
       postUrl,
@@ -55,18 +55,18 @@ async function postData(sessionCookie, formData) {
       }
     );
 
-    console.log("Post response:", postResponse.data);
+    console.log("Post response no" + (index + 1) + ": ", postResponse.data.successful);
   } catch (error) {
-    console.error("Post request failed:", error.response.data);
+    console.error("Post request failed:", error.response?.data);
     throw error;
   }
 }
 
 // Main function to perform login and post data
 async function main(data) {
-  const sessionCookie = `JSESSIONID=<SESSION_ID>`;
-  data.map(async (formData) => {
-    await postData(sessionCookie, formData);
+  const sessionCookie = `JSESSIONID=C93DB7601D1307D4E0B90C567F0B54F2`;
+  data.map(async (formData, index) => {
+    await postData(sessionCookie, formData, index);
   });
 }
 
